@@ -31,7 +31,7 @@ class Alumnos:
                         return json.dumps(inf)
 
                 # http://localhost:8080/alumnos?action=insert&token=1234&matricula=171604&nombre=Robin&primer_apellido=Van&segundo_apellido=Persie&carrera=TIC
-                if(data['action']=="insert"):
+                if(data['action']=="put"):
                     inf={}
                     inf['version']="0.01"
                     inf['status']="200 ok"  
@@ -62,7 +62,7 @@ class Alumnos:
                     return json.dumps(inf)
 
                 # http://localhost:8080/alumnos?action=buscar&token=1234&matricula=171601
-                if(data['action']=='buscar'):
+                if(data['action']=='search'):
                     inf={}
                     inf['version']="0.01"
                     inf['status']="200 ok"
@@ -84,7 +84,7 @@ class Alumnos:
                     return json.dumps(inf)
                 
                 # http://localhost:8080/alumnos?action=actualizar&token=1234&matricula=171601&nombre=Eliazar&primer_apellido=Rodriguez&segundo_apellido=Velasco&carrera=TIC
-                if(data['action']=='actualizar'):
+                if(data['action']=='update'):
                     inf={}
                     inf['version']="0.01"
                     inf['status']="200 ok"  
