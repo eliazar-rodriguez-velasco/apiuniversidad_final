@@ -125,15 +125,13 @@ class Alumnos:
                             for i in range(0, len(result)):
                                 # writer.writerow({'field1': 'A', 'field2': 'B', 'field3': 'C'})
                                 writer.writerow(result[i])
-                                print(result[i]) # print de prueba...       
+                                print(result[i]) # print de prueba...
+                #http://localhost:8080/alumnos?action=delete&token=1234&matricula=171601&nombre=Eliazar&primer_apellido=Rodriguez&segundo_apellido=Velasco&carrera=TIC       
                         return json.dumps(result)
-                    
-                    
-                #http://localhost:8080/alumnos?action=delete&token=1234&matricula=171601&nombre=Eliazar&primer_apellido=Rodriguez&segundo_apellido=Velasco&carrera=TIC
-                if data['action'] == "delete":           #Si accion es borrar va a hacer lo siguiente
+                if data['action'] == "delete":          
                     with open ('static/csv/alumnos.csv','r') as csvfiles:
                         reader =csv.DictReader(csvfiles)
-                        lo = []
+                        lxa = []
                         validator = 0
                         for row in reader:
                             result = []
@@ -153,14 +151,14 @@ class Alumnos:
                                 result.append(line3)
                                 result.append(line4)
                                 result.append(line5)
-                                lo.append(result)
+                                lxa.append(result)
                             with open ('static/csv/alumnos.csv','a+', newline = '') as csvfiles:
                                 writer = csv.writer(csvfiles)
                                 writer.writerow(result)
                             if validator == 0:
                                 result.append("No existe el valor")
                         return json.dumps("se elimino con exito")
-                else:                           #Si la accion no es alguna de las siguientes va a poner comando no encontrado
+                else:                           
                     result2={}
                     result2['Version']="0.5.1"
                     result2['status']="Command not found"
