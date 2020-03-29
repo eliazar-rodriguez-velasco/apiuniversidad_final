@@ -125,9 +125,11 @@ class Alumnos:
                             for i in range(0, len(result)):
                                 # writer.writerow({'field1': 'A', 'field2': 'B', 'field3': 'C'})
                                 writer.writerow(result[i])
-                                print(result[i]) # print de prueba...
-                        
+                                print(result[i]) # print de prueba...       
                         return json.dumps(result)
+                    
+                    
+                #http://localhost:8080/alumnos?action=delete&token=1234&matricula=171601&nombre=Eliazar&primer_apellido=Rodriguez&segundo_apellido=Velasco&carrera=TIC
                 if data['action'] == "delete":           #Si accion es borrar va a hacer lo siguiente
                     with open ('static/csv/alumnos.csv','r') as csvfiles:
                         reader =csv.DictReader(csvfiles)
@@ -167,13 +169,7 @@ class Alumnos:
                 result={}
                 result['Version']="0.5.2"
                 result['status']="Los datos insertados son incorrectos"
-                return json.dumps(result)
-        except Exception as e:
-            result={}
-            text= "ups algo paso{}".format(e.args)
-            result  ['status'] = text 
-            return json.dumps(result)
-                    
+                return json.dumps(result)         
         
         except Exception as e:
             result=[]    
